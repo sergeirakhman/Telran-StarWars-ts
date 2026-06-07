@@ -1,4 +1,5 @@
 import {friendsImages} from "../../../utils/images.ts";
+import Friend from "./friend.tsx";
 
 const DreamTeam = () => {
     return (
@@ -6,11 +7,7 @@ const DreamTeam = () => {
             <h2 className="text-center col-span-3 text-2xl">Dream team</h2>
             {
                 friendsImages.map((img, index) =>
-                    index !== 6 && index !== 8
-                        ? <img  key={index} src={img} alt="img" className={'w-full'}/>
-                        : index === 6
-                            ? <img  key={index} src={img} alt="img" className={'w-full rounded-bl-3xl'}/>
-                            : <img  key={index} src={img} alt="img" className={'w-full rounded-br-3xl'}/>
+                    <Friend friend={img} pos={index} key={img}/>
                 )
             }
 
