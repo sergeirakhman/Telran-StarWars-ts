@@ -1,5 +1,4 @@
-import {useContext} from 'react';
-import {StarWarsContext} from "../../utils/context.ts";
+import {NavLink} from "react-router";
 import Button from "../ui/button.tsx";
 
 interface NavItemProps {
@@ -7,9 +6,13 @@ interface NavItemProps {
 }
 const NavItem = ({itemTitle}: NavItemProps) => {
 
-    const {changePage} = useContext(StarWarsContext);
-
-    return <Button callback={() => changePage(itemTitle)}>{itemTitle}</Button>
+    return (
+        <nav>
+            <NavLink to={`/${itemTitle}`}>
+                <Button>{itemTitle}</Button>
+            </NavLink>
+        </nav>
+    )
 };
 
 export default NavItem;

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {baseApiUrl, daysLimit, fieldsMapper} from "../../../utils/constants.ts";
+import {baseApiUrl, daysLimit} from "../../../utils/constants.ts";
 
 const AboutMe = () => {
     const [aboutMeInfo, setAboutMeInfo] = React.useState(() => {
@@ -40,11 +40,8 @@ const AboutMe = () => {
     if (aboutMeInfo)
     return (
         <div className={'text-3xl text-justify tracking-widest leading-14 ml-8'}>
-            {Object.entries(aboutMeInfo).map(([key, value]) => {
-                const field = fieldsMapper
-                    .get(key)
-
-                return field && <p key={key}>{field.label}: {value}</p>
+            {Object.keys(aboutMeInfo).map((key) => {
+                return <p key={key}>{key}: {aboutMeInfo[key]}</p>
             })}
         </div>
     );

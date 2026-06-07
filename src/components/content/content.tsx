@@ -1,23 +1,20 @@
-import {useContext} from 'react';
-import StarWars from "./pages/starWars.tsx";
-import AboutMe from "./pages/aboutMe.tsx";
 import {navItems} from "../../utils/constants.ts";
 import Home from "./pages/home.tsx";
+import {Route, Routes} from "react-router";
+import AboutMe from "./pages/aboutMe.tsx";
+import StarWars from "./pages/starWars.tsx";
 import Contact from "./pages/contact.tsx";
-import {StarWarsContext} from "../../utils/context.ts";
 
 const Content = () => {
-    const {page} = useContext(StarWarsContext);
-    switch (page) {
-        case navItems[1]:
-            return (<AboutMe />);
-        case navItems[2]:
-            return (<StarWars />);
-        case navItems[3]:
-            return (<Contact />);
-        default:
-            return (<Home />);
-    }
+
+    return (
+        <Routes>
+            {["/", `/${navItems[0]}`].map(p => <Route key={p} path={p} element={<Home />} />)}
+            <Route path={`/${navItems[1]}`} element={<AboutMe />}></Route>
+            <Route path={`/${navItems[2]}`} element={<StarWars />}></Route>
+            <Route path={`/${navItems[3]}`} element={<Contact />}></Route>
+        </Routes>
+    )
 };
 
 export default Content;
