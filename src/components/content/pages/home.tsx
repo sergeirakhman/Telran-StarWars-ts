@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         if (!heroId) return;
         changeHero(heroId);
-    }, [heroId, changeHero]);
+    }, [heroId]);
 
     return (
         <main className={'clearfix'}>
